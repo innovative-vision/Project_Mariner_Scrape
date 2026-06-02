@@ -1,6 +1,10 @@
 import unittest
 
-from project_mariner_scrape.setup_requirements import build_setup_checklist, render_checklist
+from project_mariner_scrape.setup_requirements import (
+    build_repository_options,
+    build_setup_checklist,
+    render_checklist,
+)
 
 
 class SetupRequirementsTests(unittest.TestCase):
@@ -28,6 +32,13 @@ class SetupRequirementsTests(unittest.TestCase):
         self.assertIn("Laptop / Chrome tabs:", rendered)
         self.assertIn("Android phone access:", rendered)
         self.assertIn("Optional but recommended:", rendered)
+        self.assertIn("Current repo choices:", rendered)
+
+    def test_repository_options_include_current_and_legacy_paths(self) -> None:
+        repositories = build_repository_options()
+
+        self.assertTrue(any("google-gemini-spark/gemini-spark" in item for item in repositories))
+        self.assertTrue(any("Fandry96/k3-mariner" in item for item in repositories))
 
 
 if __name__ == "__main__":

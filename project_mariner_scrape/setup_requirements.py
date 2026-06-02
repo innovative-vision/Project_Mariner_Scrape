@@ -35,6 +35,19 @@ OPTIONAL_REQUIREMENTS = (
     Requirement("Password manager for storing the API key", required=False),
 )
 
+CURRENT_REPOSITORIES = (
+    (
+        "Gemini Spark desktop client",
+        "https://github.com/google-gemini-spark/gemini-spark",
+        "Current desktop-first repo for Windows and macOS installs.",
+    ),
+    (
+        "k3-mariner community edition",
+        "https://github.com/Fandry96/k3-mariner",
+        "Still relevant for Python/Streamlit browser access from laptop tabs and Android.",
+    ),
+)
+
 
 def build_setup_checklist(has_api_key: bool = False) -> dict[str, list[str]]:
     """Return a grouped setup checklist for bootstrapping the project."""
@@ -48,6 +61,11 @@ def build_setup_checklist(has_api_key: bool = False) -> dict[str, list[str]]:
         "android": [item.name for item in ANDROID_REQUIREMENTS],
         "optional": [item.name for item in OPTIONAL_REQUIREMENTS],
     }
+
+
+def build_repository_options() -> list[str]:
+    """Return the currently relevant upstream repository choices."""
+    return [f"{name}: {url} — {summary}" for name, url, summary in CURRENT_REPOSITORIES]
 
 
 def render_checklist(has_api_key: bool = False) -> str:
@@ -66,6 +84,9 @@ def render_checklist(has_api_key: bool = False) -> str:
         lines.append(f"{titles[section]}:")
         lines.extend(f"- {item}" for item in checklist[section])
         lines.append("")
+
+    lines.append("Current repo choices:")
+    lines.extend(f"- {item}" for item in build_repository_options())
 
     return "\n".join(lines).strip()
 

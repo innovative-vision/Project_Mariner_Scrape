@@ -4,6 +4,17 @@ Project Mariner (aka Gemini Spark) is open source.
 
 This repository now includes a tiny Python bootstrap scaffold plus tests so you can track the setup work here while you gather the API keys.
 
+## Current repos
+
+If you're updating from older Project Mariner notes, these are the repo paths to care about now:
+
+- **Current desktop-first repo:** [`google-gemini-spark/gemini-spark`](https://github.com/google-gemini-spark/gemini-spark)
+  - Best fit if you want the newer Gemini Spark desktop client on Windows or macOS.
+  - Good for laptop-hosted use when you want the current repo path reflected here.
+- **Still relevant browser/Python repo:** [`Fandry96/k3-mariner`](https://github.com/Fandry96/k3-mariner)
+  - Keep this for the older browser-tab / Streamlit-style flow.
+  - Still the more relevant option if your goal is to expose a Python app from your laptop and open it from Android Chrome.
+
 ## Other systems that can leverage this code
 
 The setup commands below are also suitable for:
@@ -23,9 +34,23 @@ The setup commands below are also suitable for:
 
 You also need a free API key from [Google AI Studio](https://aistudio.google.com/).
 
-Choose the correct commands for your operating system.
+Choose the repo path that matches how you want to run it.
 
-### Windows (Command Prompt)
+### Current desktop repo path
+
+For the updated desktop-first route, start with:
+
+1. Open the latest release page for [`google-gemini-spark/gemini-spark`](https://github.com/google-gemini-spark/gemini-spark/releases/latest)
+2. Install the Windows or macOS build on your laptop
+3. Sign in and grant the permissions the desktop app needs
+
+This is the newer repo path, but it is desktop-focused rather than Android-browser-first.
+
+### Community browser/tab repo path
+
+Keep these commands if you still want the older browser-hosted flow that can be opened from laptop Chrome tabs and, with network exposure, from Android.
+
+#### Windows (Command Prompt)
 
 ```bat
 git clone https://github.com/Fandry96/k3-mariner.git
@@ -35,7 +60,7 @@ set GEMINI_API_KEY=YOUR_API_KEY_HERE
 python -m streamlit run app.py
 ```
 
-### Mac / Linux
+#### Mac / Linux
 
 ```bash
 git clone https://github.com/Fandry96/k3-mariner.git
@@ -73,7 +98,9 @@ If you are only running locally on your laptop, your Android phone usually canno
 
 Beyond the API key itself, these are the other things you will likely need to get this repo off the ground:
 
-- The actual upstream application code referenced here (`k3-mariner`)
+- The upstream repo you actually plan to run:
+  - `google-gemini-spark/gemini-spark` for the newer desktop path
+  - `Fandry96/k3-mariner` for the browser / Streamlit path
 - A place to run it continuously (laptop, desktop, mini PC, or VPS)
 - A password manager or secure secret storage for the API key
 - A stable internet connection
@@ -82,7 +109,7 @@ Beyond the API key itself, these are the other things you will likely need to ge
 
 ## Bootstrap helper
 
-This repository now includes a small checklist helper you can run while you prepare the rest of the stack:
+This repository now includes a small checklist helper you can run while you prepare the rest of the stack and compare the current repo options:
 
 ```bash
 python3 -m project_mariner_scrape.setup_requirements
@@ -115,4 +142,4 @@ python3 scripts/check_readme.py
 
 ## Validation notes
 
-This repository still does **not** vendor the upstream `k3-mariner` application, so it cannot directly execute the full runtime here yet. The scaffold added in this repo only validates documentation and setup readiness until you bring in the API keys and the upstream runtime.
+This repository still does **not** vendor the upstream applications, so it cannot directly execute the full runtime here yet. The scaffold added in this repo only validates documentation and setup readiness until you bring in the API keys and whichever upstream repo you choose to run.

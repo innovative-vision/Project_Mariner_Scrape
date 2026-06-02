@@ -7,6 +7,7 @@ from pathlib import Path
 
 REQUIRED_PHRASES = (
     "# Project Mariner Scrape",
+    "## Current repos",
     "## Before you begin",
     "## Android phone access",
     "## Laptop Chrome tabs",
